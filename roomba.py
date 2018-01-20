@@ -3,7 +3,6 @@ import serial
 import time
 import struct
 from enum import Enum
-from music import *
 
 #https://www.irobot.com/filelibrary/pdfs/hrd/create/Create%20Open%20Interface_v2.pdf
 
@@ -226,7 +225,7 @@ class Roomba(object):
       for note in score[1:]:
         write_num(note[0])
         write_num(note[1])
-        
+
 
    	def play_song(self, song_number):
    		#song_number 0-15
