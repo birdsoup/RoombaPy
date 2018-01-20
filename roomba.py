@@ -3,6 +3,7 @@ import serial
 import time
 import struct
 from enum import Enum
+from music import *
 
 #https://www.irobot.com/filelibrary/pdfs/hrd/create/Create%20Open%20Interface_v2.pdf
 
@@ -215,18 +216,17 @@ class Roomba(object):
    		write_num(151)
    		write_num(value)
 
-   	def song(self, song_number, notes_durations):
-   		#notes_durations should be tuples of (note, duration)
-   		#song nums 0-15
-   		#song length 1-16
-   		#notes between 31-127
-   		#duration between 0-255
-   		write_num(140)
-   		write_num(song_number)
-   		write_num(len(notes_durations))
-   		for note, duration in notes_durations:
-   			write_num(note)
-   			write_num(duration)
+    # Scores are lists of tuples with each tuple being (note_num, note_duration)
+    # with the first tuple indicating (song_number, song_length)
+    sample_score = [(0, 3), (71, 64), (69, 64), (67, 64)]
+    def write_song(score):
+      write_num(140)
+      write_num(score[0][0])
+      write_num(score[0][1])
+      for note in score[1:]:
+        write_num(note[0])
+        write_num(note[1])
+        
 
    	def play_song(self, song_number):
    		#song_number 0-15
@@ -249,7 +249,8 @@ class Roomba(object):
    		sleep(0.015) #sensors are only updated every 15ms
    		#todo need to read the sensor data back from the serial port
 
-   	def stream(self, )
+   	def stream(self):
+      pass
 
     def write_num(self, num):
         port.write(struct.pack('!B', num))
