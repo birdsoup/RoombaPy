@@ -60,20 +60,22 @@ class Roomba(object):
         self.port.close()
         self.port.open()
 
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self.dd_pin, GPIO.OUT)
-        GPIO.output(self.dd_pin, GPIO.LOW)
+        #GPIO.setmode(GPIO.BOARD)
+        #GPIO.setup(self.dd_pin, GPIO.OUT)
+        #GPIO.output(self.dd_pin, GPIO.LOW)
 
 
     def turn_on(self): 
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.dd_pin, GPIO.OUT)
+
         GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(.1)
         GPIO.output(self.dd_pin, GPIO.LOW)
         time.sleep(.5)
         GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(2)
-        GPIO.output(self.dd_pin, GPIO.LOW)
-
+        
     def start(self):
         self.turn_on()
         self.write_num(128)
