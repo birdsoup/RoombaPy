@@ -62,7 +62,7 @@ class Roomba(object):
 
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.dd_pin, GPIO.OUT)
-        #GPIO.output(self.dd_pin, GPIO.LOW)
+        GPIO.output(self.dd_pin, GPIO.LOW)
 
 
     def turn_on(self): 
@@ -72,7 +72,7 @@ class Roomba(object):
         time.sleep(.5)
         GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(2)
-        #GPIO.output(self.dd_pin, GPIO.LOW)
+        GPIO.output(self.dd_pin, GPIO.LOW)
 
     def start(self):
         self.turn_on()
