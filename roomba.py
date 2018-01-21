@@ -77,6 +77,9 @@ class Roomba(object):
     def start(self):
         self.turn_on()
         self.write_num(128)
+        self.write_num(131)
+        time.sleep(1)
+
 
     def set_mode(self, mode):
         self.write_num(mode)
