@@ -61,14 +61,14 @@ class Roomba(object):
         port.open()
 
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(dd_pin, GPIO.OUT)
+        GPIO.setup(self.dd_pin, GPIO.OUT)
 
     def turn_on(self): 
-        GPIO.output(dd_pin, GPIO.HIGH)
+        GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(.1)
-        GPIO.output(dd_pin, GPIO.LOW)
+        GPIO.output(self.dd_pin, GPIO.LOW)
         time.sleep(.5)
-        GPIO.output(dd_pin, GPIO.HIGH)
+        GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(2)
 
     def start(self):
@@ -124,19 +124,19 @@ class Roomba(object):
         power()
         turn_on()
         time.sleep(2)
-        GPIO.output(7, GPIO.HIGH)
+        GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(0.250)
-        GPIO.output(7, GPIO.LOW)
+        GPIO.output(self.dd_pin, GPIO.LOW)
         time.sleep(0.250)
-        GPIO.output(7, GPIO.HIGH)
+        GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(0.250)
-        GPIO.output(7, GPIO.LOW)
+        GPIO.output(self.dd_pin, GPIO.LOW)
         time.sleep(0.250)
-        GPIO.output(7, GPIO.HIGH)
+        GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(0.250)
-        GPIO.output(7, GPIO.LOW)
+        GPIO.output(self.dd_pin, GPIO.LOW)
         time.sleep(0.250)
-        GPIO.output(7, GPIO.HIGH)
+        GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(2)
 
     def set_baud_mode(self, mode):
@@ -147,7 +147,7 @@ class Roomba(object):
 
     def set_baudrate(self, baudrate):
         #should throw exception if baudrate is invalid
-        set_baud_mode(BAUD_RATE_OPTIONS[baudrate])
+        set_baud_mode(self.BAUD_RATE_OPTIONS[baudrate])
 
     def run_demo(self, demo):
         write_num(demo)
