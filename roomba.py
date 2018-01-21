@@ -72,6 +72,7 @@ class Roomba(object):
         time.sleep(.5)
         GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(2)
+        GPIO.output(self.dd_pin, GPIO.LOW)
 
     def start(self):
         self.turn_on()
