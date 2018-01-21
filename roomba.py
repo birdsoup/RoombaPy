@@ -50,13 +50,13 @@ class Roomba(object):
     SAFE_MODE = 131
     FULL_MODE = 132
 
-    BAUD_RATES = [57600, 19200]
-    SERIAL_FILES = {'linux': 'none_yet', 'windows': 'none_yet', 'rpi': '/dev/ttyAMA0', 'rpi3': '/dev/serial0'}
+    BAUD_RATES = [19200, 57600]
+    SERIAL_FILES = {'linux': 'none_yet', 'windows': 'none_yet', 'rpi-zero': '/dev/ttyAMA0', 'rpi-3': '/dev/serial0'}
 
-    def __init__(self, dd_pin=7, baud_rate=BAUD_RATES[0], time_out=3.0):
+    def __init__(self, dd_pin=7, baud_rate=BAUD_RATES[0], time_out=3.0, serial_file=SERIAL_FILES['rpi-zero']):
         self.dd_pin = dd_pin
 
-        self.port = serial.Serial("/dev/ttyAMA0", baudrate=baud_rate, timeout=time_out)
+        self.port = serial.Serial(serial_file, baudrate=baud_rate, timeout=time_out)
         self.port.close()
         self.port.open()
 
