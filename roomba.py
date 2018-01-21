@@ -62,7 +62,7 @@ class Roomba(object):
 
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.dd_pin, GPIO.OUT)
-        GPIO.output(self.dd_pin, GPIO.LOW)
+        #GPIO.output(self.dd_pin, GPIO.LOW)
 
 
     def turn_on(self): 
@@ -72,7 +72,7 @@ class Roomba(object):
         time.sleep(.5)
         GPIO.output(self.dd_pin, GPIO.HIGH)
         time.sleep(2)
-        GPIO.output(self.dd_pin, GPIO.LOW)
+        #GPIO.output(self.dd_pin, GPIO.LOW)
 
     def start(self):
         self.turn_on()
@@ -259,5 +259,5 @@ class Roomba(object):
 
         #need to wait at least 200microseconds between characters when at 115200 baud rate 
         if self.baud_rate == 115200:
-            sleep(200e-9) 
+            time.sleep(200e-9) 
 
