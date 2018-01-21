@@ -55,7 +55,7 @@ class Roomba(object):
 
     def __init__(self, dd_pin=7, baud_rate=BAUD_RATES[0], time_out=3.0, serial_file=SERIAL_FILES['rpi-zero']):
         self.dd_pin = dd_pin
-
+        self.baud_rate = baud_rate
         self.port = serial.Serial(serial_file, baudrate=baud_rate, timeout=time_out)
         self.port.close()
         self.port.open()
@@ -255,6 +255,6 @@ class Roomba(object):
         self.port.write(struct.pack('!B', num))
 
         #need to wait at least 200microseconds between characters when at 115200 baud rate 
-        if self.baudrate == 115200:
+        if self.baud_rate == 115200:
             sleep(200e-9) 
 
