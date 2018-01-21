@@ -254,7 +254,7 @@ class Roomba(object):
     def write_num(self, num):
         port.write(struct.pack('!B', num))
 
-        #need to wait at least 200μs between characters when at 115200 baud rate 
+        #need to wait at least 200microseconds between characters when at 115200 baud rate 
         if baudrate == 115200:
             sleep(200e-9) 
 
